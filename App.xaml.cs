@@ -1,15 +1,11 @@
-﻿using Minimal_injection.Repository;
-using Minimal_injection.Services;
-using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using Unity;
+using Minimal_injection.Services;
+using Minimal_injection.ViewModel;
+using Minimal_injection.Repository;
 
 namespace Minimal_injection
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private IUnityContainer _container;
@@ -31,11 +27,13 @@ namespace Minimal_injection
         {
             // Register your services and repositories
             container.RegisterType<ICalculatorRepositpory, CalculatorRepositpory>();
-            //container.RegisterType<ICalculatorService, CalculatorService>();
+            container.RegisterType<ICalculatorService, CalculatorService>();
+
+            // Register ViewModel
+            container.RegisterType<MainViewModel>();
 
             // Register other dependencies
             container.RegisterType<MainWindow>();
         }
     }
-
 }

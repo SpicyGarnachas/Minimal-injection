@@ -1,24 +1,16 @@
-﻿using System.Text;
+﻿using Minimal_injection.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Minimal_injection
+
+namespace Minimal_injection;
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    private readonly MainViewModel _mainViewModel;
+    public MainWindow(MainViewModel mainViewModel)
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        _mainViewModel = mainViewModel;
+        DataContext = _mainViewModel;
     }
 }
