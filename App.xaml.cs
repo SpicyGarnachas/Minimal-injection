@@ -8,7 +8,7 @@ namespace Minimal_injection
 {
     public partial class App : Application
     {
-        private IUnityContainer _container;
+        private IUnityContainer? _container;
 
         protected override void OnStartup(StartupEventArgs e)
         {

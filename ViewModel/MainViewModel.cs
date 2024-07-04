@@ -53,6 +53,6 @@ public class MainViewModel : BaseViewModel
 
     private void OnCalculateCommandExecuted()
     {
-        Result = _calculatorService.CalculateService((decimal)Value1, (decimal)Value2);
+        Result = _calculatorService.CalculateService(Value1, Value2);
     }
 }

@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Minimal_injection"
+        xmlns:local="clr-namespace:Minimal_injection" xmlns:viewmodel="clr-namespace:Minimal_injection.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+        <Window.Resources>
+            <local:DecimalValueConverter x:Key="DecimalValueConverter" />
+        </Window.Resources>
     <Grid>
         <StackPanel>
-            <TextBox Text="{Binding Value1, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox Text="{Binding Value2, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding Value1, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalValueConverter}}" />
+            <TextBox Text="{Binding Value2, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DecimalValueConverter}}" />
             <Button Command="{Binding CalculateCommand}" Content="Calculate" />
             <TextBlock Text="{Binding Result}" />
         </StackPanel>
