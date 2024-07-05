@@ -2,16 +2,10 @@
 
 namespace Minimal_injection.Services;
 
-public class CalculatorService : ICalculatorService
+public class CalculatorService(ICalculatorRepositpory calculatorRepository) : ICalculatorService
 {
-    private readonly ICalculatorRepositpory _calculatorRepositpory;
-
-    public CalculatorService(ICalculatorRepositpory calculatorRepository)
-    {
-        _calculatorRepositpory = calculatorRepository;
-    }
     public decimal CalculateService(decimal value1, decimal value2)
     {
-        return _calculatorRepositpory.CalculateRepositpory(value1, value2);
+        return calculatorRepository.CalculateRepositpory(value1, value2);
     }
 }
